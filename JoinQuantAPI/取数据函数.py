@@ -28,3 +28,141 @@
 ##
 get_price(security, start_date=None, end_date=None, frequency='daily', field
 s=None, skip_paused=False, fq='pre', count=None)
+
+'''
+    history ♠ ­ 获取历史数据
+    查看历史的行情数据
+
+    关于停牌:因为获取了多只股票的数据,可能有的股票停牌有的没有,为了保持时间轴的一致, 我们默认没有跳过停牌的日期, 停牌时使用停牌前的数据填充(请看SecurityUnitData的paused属性).如想跳过,请使用skip_paused=True参数当取天数据时, 不包括当天的, 即使是在收盘后
+
+    参数
+    见文档
+    返回
+        见文档
+'''
+##
+history(count, unit='1d', field='avg', security_list=None, df=True, skip_pause
+d=False, fq='pre')
+
+'''
+    attribute_history ♠ ­ 获取历史数据
+    查看历史的行情数据
+
+    查看某一支股票的历史数据,可以选这只股票的多个属性,默认跳过停牌日期.当取天数据时, 不包括当天的, 即使是在收盘后
+
+    参数
+    见文档
+    返回
+    见文档
+'''
+##
+attribute_history(security, count, unit='1d',fields=['open', 'close', 'high', 'low', 'volume', 'money'],skip_paused=True, df=True, fq='pre')
+
+'''
+    get_current_data ♠ ­ 获取当前时间数据
+    获取当前单位时间（当天/当前分钟）的涨跌停价,是否停牌，当天的开盘价等。回测时,通过API获取到的是前一个单位时间(天/分钟)的数据,而有些数据,我们在这个单位时间是知道的,比如涨跌停价,是否停牌,当天的开盘价. 我们添加了这个API用来获取这些数据
+
+    参数
+    见文档
+    返回
+    见文档
+'''
+##
+get_current_data()
+
+'''
+    get_fundamentals ­ 查询财务数据
+    查询财务数据，详细的数据字段描述请点击财务数据文档查看
+    参数
+    见文档
+    返回
+    见文档
+'''
+##
+get_fundamentals(query_object, date=None, statDate=None)
+
+'''
+    get_index_stocks ­ 获取指数成份股
+    获取一个指数给定日期在平台可交易的成分股列表，请点击指数列表查看指数信息
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_index_stocks(index_symbol, date=None)
+
+'''
+    get_industry_stocks ­ 获取行业成份股
+    获取在给定日期一个行业的所有股票，行业分类列表见数据页面­行业概念数据。
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_industry_stocks(industry_code, date=None)
+
+'''
+    get_concept_stocks ­ 获取概念成份股
+    获取在给定日期一个概念板块的所有股票，概念板块分类列表见数据页面­行业概念数据。
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_concept_stocks(concept_code, date=None)
+
+#jqdata模块
+#jqdata 模块用来提供更多数据
+from jqdata import *
+
+'''
+    get_all_trade_days ­ 获取所有交易日
+    获取所有交易日, 不需要传入参数, 返回一个包含所有交易日的 numpy.ndarray, 每个元素为一个datetime.date 类型.
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_all_trade_days()
+
+'''
+    get_trade_days ­ 获取指定范围交易日
+    获取指定日期范围内的所有交易日, 返回 numpy.ndarray, 包含指定的 start_date 和 end_date, 默认返回至datatime.date.today() 的所有交易日
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_trade_days(start_date=None, end_date=None, count=None)
+
+'''
+    get_money_flow ­ 获取资金流信息
+    获取一只或者多只股票在一个时间段内的资金流向数据
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_money_flow(security_list, start_date=None, end_date=None, fields=None, cou
+nt=None)
+
+'''
+    gta.run_query ­ 查询国泰安数据
+    查询国泰安数据，详细的数据字段描述请点击国泰安数据查看，注意未来函数，建议使用filter进行过滤
+    
+    1. 为了防止返回数据量过大, 我们每次最多返回3000行
+    2. 不能进行连表查询，即同时查询多张表内数据
+    参数
+    见文档
+    返回
+    返回股票代码的list
+'''
+##
+get_money_flow(security_list, start_date=None, end_date=None, fields=None, cou
+nt=None)
