@@ -1,3 +1,0 @@
-5. 下单后您可以调用get_open_orders取得所有未完成的订单, 调用cancel_order取消订单
-6. 您可以在handle_data里面调用record()函数记录某些数据,我们会以图表的方式显示在回测结果页面
-7. 您可以在任何时候调用log.info/debug/warn/error函数来打印一些日志
