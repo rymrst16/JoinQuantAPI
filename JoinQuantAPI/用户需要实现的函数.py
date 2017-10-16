@@ -95,10 +95,10 @@ def initialize(context):
     
     共有如下选项：
         1.use_real_price(真实价格回测): value是True/False.是否使用真实价格回测.原理讲解图示见帖子(https://www.joinquant.com/post/1629)。默认是False(主要是为了让旧的策略不会出错).
-        为了更好的模拟, 建议大家都设成 True. 将来对接实盘交易时, 此选项会强制设成 True
+        为了更好的模拟,建议大家都设成True.将来对接实盘交易时,此选项会强制设成True
         2.order_volume_ratio(设定成交量比例):value是一个float值,根据实际行情限制每个订单的成交量.
     '''
-    set_benchmark('use_real_price',True)
+    set_option('use_real_price',True)
 
 '''
     该函数每个单位时间会调用一次,如果按天回测,则每天调用一次,如果按分钟,则每分钟调用一次
@@ -113,7 +113,7 @@ def initialize(context):
         None
 '''
 ##context.portfolio中的持仓价格会使用当天开盘价更新
-##data是昨天的按天数据, 要想拿到当天开盘价,请使用get_current_data拿取day_open字段
+##data是昨天的按天数据,要想拿到当天开盘价,请使用get_current_data拿取day_open字段
 def handle_data(context, data):
     order("000001.XSHE",100)
 

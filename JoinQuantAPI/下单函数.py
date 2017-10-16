@@ -40,17 +40,18 @@ order(security, amount, style=None, side='long', pindex=0)
         Order对象或者None, 如果创建委托成功, 则返回Order对象, 失败则返回None
 '''
 ##
-order(security, amount, style=None, side='long', pindex=0)
+order_target(security, amount, style=None, side='long', pindex=0)
 
 '''
     order_value ­ 按价值下单
     买卖价值为value的股票，金融期货暂不支持该API
     参数
-        security: 股票名字
-        value: 股票价值
+        security: 标的代码
+        amount: 期望的最终数量
         style: 参见order styles, None代表MarketOrder
         side: ‘long’/’short’，平空单还是多单。默认为多单，股票、基金暂不支持开空单。
-        pindex: 在使用set_subportfolios创建了多个仓位时，指定subportfolio的序号,从0开始,比如0为指定第一个subportfolio,1为指定第二个subportfolio，默认为0。
+        pindex:在使用set_subportfolios创建了多个仓位时，指定subportfolio的序号, 从 0 开始, 比如 0为
+        指定第一个 subportfolio, 1 为指定第二个 subportfolio，默认为
     返回
         Order对象或者None, 如果创建委托成功, 则返回Order对象, 失败则返回None
 '''
