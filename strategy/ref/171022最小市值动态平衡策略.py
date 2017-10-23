@@ -18,12 +18,12 @@ def handle_data(context, data):
     #查询财务数据，详细的数据字段描述（https://www.joinquant.com/data/dict/fundamentals）查看
     #投资研究里面有具体的案例
     smalls = get_fundamentals(query(
-        valuation.code, valuation.market_cap, valuation.capitalization,valuation.circulating_cap,valuation.circulating_market_cap
+        valuation.code,valuation.market_cap, valuation.capitalization,valuation.circulating_cap,valuation.circulating_market_cap
     ).filter(
-        valuation.market_cap <= 20
+        valuation.market_cap <= 20 #单位亿元
     ))
     new_smalls = []
-    for idx in range(0, len(smalls['code']), 1):
+    for idx in range(0, len(smalls['code']), 1):    #选出所有上一个交易日有交易的股票，返回一个字典，字典中的数据有股票代码、昨日收盘价、股票总市值（亿元）
         si = attribute_history(smalls['code'][idx], 1, '1d', ('open','close','price','pre_close','high_limit','low_limit','high','low','volume'), False)
         if (si['volume'][-1] > 0):
             new_smalls.append({'code':smalls['code'][idx], 'close':si['close'][-1], 'market_cap':smalls['market_cap'][idx]})
